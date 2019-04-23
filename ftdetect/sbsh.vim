@@ -1,1 +1,1 @@
-autocmd BufRead,BufNewFile *.sbsh setfiletype sbsh
+au BufRead,BufNewFile *.sbsh setfiletype sbsh

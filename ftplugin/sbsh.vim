@@ -2,8 +2,6 @@
 " Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let s:not_prefixable_keywords = [ "import", "data", "instance", "class", "{-#", "type", "case", "do", "let", "default", "foreign", "--"]
-
 " guess correct number of spaces to indent
 " (tabs are not allowed)
 function! Get_indent_string()
@@ -61,7 +59,7 @@ endfunction
 
 " change lines back into text
 function! Unlines(lines)
-    return join(a:lines, "\n") . "\n"
+    return join(a:lines, "\n")
 endfunction
 
 " vim slime handler
@@ -92,14 +90,16 @@ if !exists("g:sbsh_no_mappings") || !g:sbsh_no_mappings
   endif
 
   if !hasmapto('<Plug>SbshParagraphSend', 'n')
-    nmap <buffer> <localleader>ss <Plug>SbshParagraphSend
+    nmap <buffer> <localleader><localleader> <Plug>SbshParagraphSend
     nmap <buffer> <c-e> <Plug>SbshParagraphSend
   endif
 
   imap <buffer> <c-e> <Esc><Plug>SbshParagraphSend<Esc>i<Right>
+  imap <buffer> <localleader><localleader> <Plug>SbshParagraphSend
 
   nnoremap <buffer> <localleader>h :SbshHush<cr>
   nnoremap <buffer> <c-h> :SbshHush<cr>
+
   let i = 1
   while i <= 9
     execute 'nnoremap <buffer> <localleader>'.i.'  :SbshSilence '.i.'<cr>'
